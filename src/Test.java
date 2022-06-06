@@ -54,7 +54,7 @@ public class Test {
             @Override
             public void run() {
                 if (bank.getUserCounter() != 0) {
-                    System.out.print("Choice id user for withdrawals");
+                    System.out.println("Choice id user for withdrawals");
                     bank.printListUsers();
                     System.out.print("Input id: ");
                     User user = bank.findUserById(scanner.nextInt());
@@ -71,11 +71,11 @@ public class Test {
             @Override
             public void run() {
                 if (bank.getUserCounter() != 0) {
-                    System.out.print("Choice id user for replenish");
+                    System.out.println("Choice id user for replenish");
                     bank.printListUsers();
                     System.out.print("Input id: ");
                     User user = bank.findUserById(scanner.nextInt());
-                    System.out.println("Input amount for withdrawals: ");
+                    System.out.print("Input amount: ");
                     int amount = scanner.nextInt();
                     bank.fundUser(user, amount);
                 }else {

@@ -70,7 +70,7 @@ public class Bank {
         for (int i = 0; i < userCounter; i++) {
             if (users[i].getId() == id) {
                 user = users[i];
-                System.out.println("Founded User: ");
+                System.out.println("User found: ");
                 System.out.println("id: " + user.getId() + ", " + "Name: " + user.getInfo().getName() + ", " +
                         "Surname: " + user.getInfo().getSurname() + ", " + "City: " + user.getInfo().getAddressUser().getCity() +
                         ", " + "Street: " + user.getInfo().getAddressUser().getStreet() + ", " + "Building: " +
@@ -79,7 +79,7 @@ public class Bank {
                         "Balance: " + user.getCard().getBalance());
                 flag = true;
             }else if(!flag){
-                System.out.println("User with id = " + id + "don't founded");
+                System.out.println("User with id = " + id + "don't find");
             }
         }
         return user;
@@ -90,7 +90,8 @@ public class Bank {
             System.out.println("You input withdrawal the amount 0 or less than 0  ");
         }
         if(user.getCard().getBalance() > amount && (amount+amount*BANK_COMMISSION) < user.getCard().getBalance()) {
-            user.getCard().setBalance((long) (amount - amount * BANK_COMMISSION / 100));
+            user.getCard().setBalance((long) (user.getCard().getBalance() - (amount + (amount * BANK_COMMISSION) / 100)));
+            System.out.println("Withdrawals Success");
         }
         else if (user.getCard().getBalance() < amount){
             System.out.println("Withdrawal the amount exceeds limit. Maximum withdrawal amount:" + user.getCard().getBalance());
@@ -106,7 +107,7 @@ public class Bank {
         if (amount <= 0) {
             System.out.println("You input Funding amount 0 or less than 0  ");
         }else {
-            user.getCard().setBalance(amount);
+            user.getCard().setBalance(user.getCard().getBalance() + amount);
         }
     }
 
